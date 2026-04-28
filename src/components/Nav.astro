@@ -1,0 +1,24 @@
+---
+const path = Astro.url.pathname;
+const isHome = path === '/' || path === '';
+---
+<nav class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-white/85 border-b border-slate-200/60">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/icon.png" alt="" class="w-8 h-8 rounded-lg shadow-sm" />
+      <span class="font-display font-semibold text-slate-900 tracking-tight">EDU Plus Apps</span>
+    </a>
+    <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+      {isHome && <a href="#products" class="hover:text-slate-900 transition">Products</a>}
+      {isHome && <a href="#about" class="hover:text-slate-900 transition">About</a>}
+      <a href="/support/" class="hover:text-slate-900 transition">Support</a>
+      <a href="/privacy/" class="hover:text-slate-900 transition">Privacy</a>
+    </div>
+    <a
+      href="mailto:support@eduplusapps.com"
+      class="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-800 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 text-white text-sm font-semibold px-4 py-2 rounded-full transition"
+    >
+      Contact
+    </a>
+  </div>
+</nav>

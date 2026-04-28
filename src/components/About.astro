@@ -1,0 +1,39 @@
+---
+const principles = [
+  {
+    title: 'Privacy is the default, not a setting.',
+    body: 'No analytics, no ad SDKs, no telemetry, no servers we operate. Your data lives on your device and in your private iCloud account. We literally cannot see it.',
+  },
+  {
+    title: 'Built for the actual workflow, not a generic one.',
+    body: 'Generic apps treat schools like small businesses. They aren\'t. Districts have their own rhythms, calendars, paperwork, and compliance requirements. We design for that.',
+  },
+  {
+    title: 'Apple-first, deliberately.',
+    body: 'Native iOS, SwiftUI, CloudKit, StoreKit. We use Apple\'s frameworks the way they\'re meant to be used — which means apps that feel right, sync without setup, and respect platform conventions.',
+  },
+  {
+    title: 'Independent and small on purpose.',
+    body: 'No investors. No growth-at-all-costs. Built so the apps stay focused and the developer stays accountable to actual users, not a board.',
+  },
+];
+---
+<section id="about" class="py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-2xl mx-auto text-center mb-14">
+      <p class="text-sm font-semibold tracking-widest uppercase text-brand-700 mb-3">Our principles</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+        How EDU Plus Apps thinks about software.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-12 max-w-4xl mx-auto">
+      {principles.map((p) => (
+        <div>
+          <h3 class="font-display text-xl font-bold tracking-tight text-slate-900 mb-3">{p.title}</h3>
+          <p class="text-slate-600 leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

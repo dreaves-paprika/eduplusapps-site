@@ -1,0 +1,63 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  showNav?: boolean;
+  showFooter?: boolean;
+}
+
+const {
+  title = 'EDU Plus Apps — Software for the way K-12 work actually happens',
+  description = 'Focused, privacy-respecting iOS apps for educators, district staff, and the people who keep schools running. No analytics, no ads, no data collection.',
+  ogImage = '/og-image.png',
+  showNav = true,
+  showFooter = true,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#177566" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:site_name" content="EDU Plus Apps" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "EDU Plus Apps",
+      "url": "https://eduplusapps.com",
+      "logo": new URL('/icon.png', Astro.site).toString(),
+      "email": "support@eduplusapps.com",
+      "description": description,
+    })} />
+  </head>
+  <body class="bg-white text-slate-900 font-sans selection:bg-brand-200 selection:text-brand-900">
+    {showNav && <Nav />}
+    <slot />
+    {showFooter && <Footer />}
+  </body>
+</html>
